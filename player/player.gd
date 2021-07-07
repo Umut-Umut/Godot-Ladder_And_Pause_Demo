@@ -6,10 +6,14 @@ extends KinematicBody2D
 # Ardindan olusturdugum bu sahneyi proje ayarlarindan autoload a ekledim.
 
 
-
-
 onready var global = get_tree().get_current_scene()
 onready var animations = get_node("AnimatedSprite")
+onready var inventory = get_node("/root/Inventory")
+
+
+var inv = ["Zirh", "Balta", "Migfer"]
+var chest = null
+
 
 var gravity = -50
 
@@ -58,7 +62,16 @@ func control():
 	if is_on_wall():
 		if Input.is_action_just_pressed("ui_select"):
 			vel.y -= 400
-
+	
+	
+	# Envanter Sistemi
+	if Input.is_action_just_pressed("ui_key_e"):
+		if chest != null:
+			inventory.get_node("player_inv").visible = false
+			inventory.is_show_player_inv = false
+			chest.player_items = inv
+			chest.open()
+		else: inventory.show_player_inv(inv)
 
 func animation_manager():
 	if (y_str > 0.5 or y_str < -0.5) and is_ladder:
@@ -80,9 +93,18 @@ func _on_Area2D_body_entered(body):
 		vel.y = 0
 		gravity = 0
 		is_ladder = true
+	
+	if body.collision_layer == 16:
+		#inventory.is_chest = true
+		chest = body
+		chest.asset.texture = load("res://assets/chest_open.png")
 
 
 func _on_Area2D_body_exited(body):
 	if body.collision_layer == 8:
 		gravity = -50
 		is_ladder = false
+	if body.collision_layer == 16:
+		#inventory.is_chest = false
+		chest.asset.texture = load("res://assets/chest.png")
+		chest = null

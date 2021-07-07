@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knight_climp.png-eee0eb79b616db72f30cb04f50f95160.stex"
+path="res://.import/knight_climp.png-850a14b1c4523baedbf2e372bb257c64.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/knight_anim/knight_climp.png"
-dest_files=[ "res://.import/knight_climp.png-eee0eb79b616db72f30cb04f50f95160.stex" ]
+source_file="res://knight_anim/knight_climp.png"
+dest_files=[ "res://.import/knight_climp.png-850a14b1c4523baedbf2e372bb257c64.stex" ]
 
 [params]
 

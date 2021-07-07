@@ -17,11 +17,20 @@ config/icon="res://icon.png"
 [autoload]
 
 Pause="*res://world/pause.tscn"
+Inventory="*res://inventory/inventory.tscn"
 
 [display]
 
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[input]
+
+ui_key_e={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -29,6 +38,7 @@ window/stretch/aspect="keep"
 2d_physics/layer_2="wall"
 2d_physics/layer_3="player_area"
 2d_physics/layer_4="ladder"
+2d_physics/layer_5="chest"
 
 [physics]
 
